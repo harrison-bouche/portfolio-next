@@ -166,7 +166,32 @@
     * {
         @apply border-border outline-ring/50;
     }
-    body {
-        @apply bg-background text-foreground;
-    }
+}
+
+@import './_variables.css';
+
+@font-face {
+    font-family: 'Crustaceans Signature';
+    src: url('/public/fonts/crustaceans-signature.woff2') format('woff2');
+}
+
+body {
+    --dot-size: 6px;
+    --dot-space: 20px;
+
+    background:
+        linear-gradient(
+                90deg,
+                var(--bouche-theme-color-background-default)
+                    calc(var(--dot-space) - var(--dot-size)),
+                transparent 1%
+            )
+            center / var(--dot-space) var(--dot-space),
+        linear-gradient(
+                var(--bouche-theme-color-background-default)
+                    calc(var(--dot-space) - var(--dot-size)),
+                transparent 1%
+            )
+            center / var(--dot-space) var(--dot-space),
+        var(--bouche-theme-layout-color-foreground);
 }

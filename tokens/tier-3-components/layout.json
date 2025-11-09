@@ -1,0 +1,7 @@
+{
+    "layout": {
+        "color": {
+            "foreground": { "value": "{color.nightsky.850}" }
+        }
+    }
+}
