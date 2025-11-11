@@ -3,7 +3,10 @@
         <main class="page__content">
             <div class="page__logo">
                 <img src="/harrison.png" />
-                <img src="/bouche.png" `class="page__logo-bouche" `/>
+                <img
+                    src="/bouche.png"
+                    class="page__logo-bouche"
+                />
             </div>
 
             <a
