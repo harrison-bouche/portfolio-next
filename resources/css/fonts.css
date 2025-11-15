@@ -1,0 +1,44 @@
+/* rubik-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/public/fonts/rubik-v31-latin-regular.woff2') format('woff2');
+}
+
+/* rubik-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/public/fonts/rubik-v31-latin-700.woff2') format('woff2');
+}
+
+/* rubik-bubbles-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Rubik Bubbles';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/public/fonts/rubik-bubbles-v3-latin-regular.woff2') format('woff2');
+}
+
+/* crustaceans-signature-regular - latin */
+@font-face {
+    font-display: block; 
+    font-family: "Crustaceans Signature";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/public/fonts/crustaceans-signature.woff2") format("woff2");
+}
+
+/* rubik-vinyl-regular - latin */
+@font-face {
+  font-display: optional; 
+  font-family: 'Rubik Vinyl';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/public/fonts/rubik-vinyl-v1-latin-regular.woff2') format('woff2');
+}
