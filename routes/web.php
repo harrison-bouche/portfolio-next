@@ -45,7 +45,7 @@ Route::post("/contact", function (Request $request, ContactFormData $data) {
         }
     }
 
-    Mail::to("harrison@bouche.dev")->queue(new ContactEstablished($data));
+    Mail::to("harrison@bouche.dev")->send(new ContactEstablished($data));
 
     return to_route("home");
 })->name("contact");
