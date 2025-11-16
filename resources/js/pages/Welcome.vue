@@ -113,7 +113,6 @@
 
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 0.5rem;
 
     @container (min-width: 800px) {
@@ -137,6 +136,7 @@
 }
 
 .page__logo-image--bouche {
+    transform-origin: left;
     transform: scale(0.8);
 
     @container (min-width: 800px) {
@@ -147,13 +147,14 @@
 
 .page__cta {
     display: flex;
+    align-items: start;
+    justify-content: start;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: 1rem;
 
-    @container (min-width: 600px) {
+    @container (min-width: 700px) {
         flex-direction: row;
+        align-items: center;
         gap: 3rem;
     }
 
@@ -162,6 +163,7 @@
 
 .page__text {
     width: 100%;
+    max-width: 350px;
     padding: 1rem 2rem;
 
     position: relative;
@@ -197,10 +199,17 @@
 
         transform: rotate(-2deg) scale(0.95);
     }
+
+    @container (min-width: 700px) {
+        max-width: none;
+    }
 }
 
 .page__text-icon {
+    min-width: 2.5rem;
     width: 2.5rem;
+
+    display: block;
 }
 
 .page__tagline {
@@ -210,11 +219,13 @@
 
     display: flex;
     flex-direction: column;
+    align-items: start;
     color: var(--bouche-color-neutral-100);
 
     transform: scale(0.7);
+    transform-origin: left;
 
-    @media (min-width: 500px) {
+    @media (min-width: 600px) {
         transform: scale(1);
     }
 }
