@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html
-    lang="en"
-    @class(["dark" => ($appearance ?? "system") == "dark"])
->
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -11,22 +8,7 @@
         content="width=device-width, initial-scale=1"
     >
 
-    {{-- Inline script to detect system dark mode preference and apply it immediately --}}
-    <script>
-        (function() {
-            const appearance = '{{ $appearance ?? "system" }}';
-
-            if (appearance === 'system') {
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-                if (prefersDark) {
-                    document.documentElement.classList.add('dark');
-                }
-            }
-        })();
-    </script>
-
-    <title inertia>{{ config("app.name") }}</title>
+    <title>{{ config("app.name") }}</title>
 
     <link
         rel="icon"
@@ -34,8 +16,14 @@
         type="image/svg+xml"
     >
 
-    @vite(["resources/js/app.ts", "resources/css/app.css"])
-    @inertiaHead
+    <link rel="preconnect" href="https://challenges.cloudflare.com">
+    <script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        async
+        defer
+    ></script>
+
+    @vite(["resources/css/app.css"])
 </head>
 
 <body>
@@ -82,7 +70,7 @@
         </defs>
     </svg>
 
-    @inertia
+    {{ $slot }}
 </body>
 
 </html>

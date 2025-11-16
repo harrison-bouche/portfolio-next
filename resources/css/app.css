@@ -1,10 +1,16 @@
 @import "./reset.css";
 @import "./_variables.css";
 @import "./fonts.css";
+@import "./welcome.css";
 
 body {
     --dot-size: 6px;
     --dot-space: 20px;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    font-family: "Rubik", Arial, sans-serif;
 
     background:
         linear-gradient(
@@ -25,23 +31,45 @@ body {
     filter: url(#jagged-svg);
 }
 
-.jagged-border {
-    position: relative;
+.jagged-svg-xl {
+    filter: url(#jagged-svg-xl);
 }
 
-.jagged-border::after {
-    content: "";
+.jagged-border {
+    --jagged-border-color: var(--bouche-color-lamplight-500);
+    position: relative;
 
-    width: 100%;
-    height: 100%;
+    &::after {
+        content: "";
 
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
+        width: calc(100% + 6px);
+        height: calc(100% + 6px);
 
-    border: var(--bouche-color-lamplight-500) 5px solid;
-    border-radius: 16px;
+        position: absolute;
+        z-index: 1;
+        top: -3px;
+        left: -3px;
 
-    filter: url(#jagged);
+        border: var(--jagged-border-color) 5px solid;
+        border-radius: 16px;
+
+        pointer-events: none;
+
+        transition: 0.15s ease-out;
+
+        filter: url(#jagged);
+    }
+
+
+    &[data-jagged="dark"]:not(.error):not(:focus-within) {
+        --jagged-border-color: var(--bouche-color-nightsky-900);
+    }
+
+    &[data-jagged="light"]:not(.error):not(:hover) {
+        --jagged-border-color: var(--bouche-color-neutral-100);
+    }
+
+    &.error {
+        --jagged-border-color: red /* var(--bouche-color-red-500) */;
+    }
 }
