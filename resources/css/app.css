@@ -20,11 +20,6 @@ body {
             center / var(--dot-space) var(--dot-space),
         var(--bouche-theme-layout-color-foreground);
 }
-
-.jagged-svg {
-    filter: url(#jagged-svg);
-}
-
 .jagged-border {
     position: relative;
 }

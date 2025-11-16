@@ -39,8 +39,6 @@
 </head>
 
 <body class="font-sans antialiased">
-    @inertia
-
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="0" width="0">
         <defs>
             <filter id="jagged">
@@ -48,11 +46,20 @@
                 <feDisplacementMap in="SourceGraphic" scale="3" />
             </filter>
             <filter id="jagged-svg">
-                <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" />
-                <feDisplacementMap in="SourceGraphic" scale="1" />
-            </filter>
+            <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.5"
+                numOctaves="4"
+            />
+            <feDisplacementMap
+                in="SourceGraphic"
+                scale="1.5"
+            />
+        </filter>
         </defs>
     </svg>
+
+    @inertia
 </body>
 
 </html>
