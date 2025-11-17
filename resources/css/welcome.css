@@ -26,13 +26,14 @@
 }
 
 .page__hero {
-    min-height: 100dvh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     @media (min-width: 1100px) {
         min-height: 60dvh;
+        max-height: 800px;
         padding-block-end: 4rem;
 
         justify-content: end;
