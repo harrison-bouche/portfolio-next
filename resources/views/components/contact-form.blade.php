@@ -50,7 +50,7 @@
                         @enderror
                     </div>
                 </label>
-                <label class="input input--subject">
+                <label class="input input--full-col">
                     <span class="input__label">Subject *</span>
                     <div
                         class="jagged-border @error("subject") error @enderror"
@@ -64,7 +64,7 @@
                         />
                     </div>
                 </label>
-                <label class="input">
+                <label class="input input--full-col">
                     <span class="input__label">Message</span>
                     <div
                         class="jagged-border @error("message") error @enderror"
@@ -76,21 +76,38 @@
                         ></textarea>
                     </div>
                 </label>
-                @env("production")
-                <div
-                    class="cf-turnstile"
-                    data-sitekey="0x4AAAAAACBQLUSobEpgWH4u"
-                    data-theme="dark"
-                    data-size="normal"
-                ></div>
-                @endenv
+                <label class="contact-form__turnstile-wrapper">
+                    <span class="input__label">Are You Human?</span>
+                    <div
+                        class="cf-turnstile contact-form__turnstile jagged-turnstile" data-jagged="dark"
+                        data-sitekey="{{ config("services.cloudflare.turnstile.sitekey") }}"
+                        data-theme="dark"
+                        data-size="flexible"
+                        data-language="en-US"
+                        data-callback="onSuccess"
+                    ></div>
+                </label>
                 <button
-                    class="button jagged-border"
+                    id="contact-form-submit"
+                    class="button button--disabled jagged-border"
                     data-jagged="light"
+                    disabled
                 >
-                    <span>Send</span>
+                    <span>Complete Captcha</span>
                 </button>
             </form>
         </div>
     </div>
 </div>
+
+@pushOnce('scripts')
+<script defer>
+    function onSuccess() {
+        const button = document.getElementById("contact-form-submit");
+
+        button.classList.remove('button--disabled')
+        button.disabled = false;
+        button.textContent = "Send";
+    }
+</script>
+@endpushOnce

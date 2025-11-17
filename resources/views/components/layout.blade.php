@@ -23,6 +23,8 @@
         defer
     ></script>
 
+    @stack('scripts')
+
     @vite(["resources/css/app.css"])
 </head>
 

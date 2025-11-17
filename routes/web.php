@@ -37,11 +37,11 @@ Route::post("/contact", function (Request $request, ContactFormData $data) {
         try {
             $response = Http::post($url, $cfVerifyData);
         } catch (\Exception $e) {
-            return abort(400, "Cloudflare Turnstile validation failed.");
+            return abort(400, "Cloudflare Captcha validation failed. Please try again.");
         }
 
         if (!$response->json("success")) {
-            return abort(400, "Cloudflare Turnstile validation failed.");
+            return abort(400, "Cloudflare Captcha validation failed. Please try again.");
         }
     }
 
