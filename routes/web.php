@@ -20,13 +20,13 @@ Route::get("/", function () {
 Route::post("/contact", function (Request $request, ContactFormData $data) {
     if (app()->environment("production")) {
         $validated = $request->validate([
-            "cf-turnstile-response" => "required",
+            "cf-turnstile-response" => "required|string",
         ]);
 
         $url = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
         $cfVerifyData = [
-            "secret" => config("services.cloudflare.turnstile.key"),
+            "secret" => config("services.cloudflare.turnstile.secret"),
             "response" => $validated["cf-turnstile-response"],
             "remoteip" => $request->server(
                 "HTTP_CF_CONNECTING_IP",
