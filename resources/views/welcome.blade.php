@@ -21,8 +21,8 @@
                         <span class="page__tagline-line-2">for hire.</span>
                     </p>
 
-                    <a
-                        href="mailto:harrison@bouche.dev"
+                    <button
+                        id="copy-email"
                         class="page__text jagged-border"
                     >
                         <svg
@@ -35,7 +35,7 @@
                             />
                         </svg>
                         <span>Email Me</span>
-                    </a>
+                    </button>
                 </div>
             </section>
 
@@ -79,4 +79,33 @@
             </svg>
         </a>
     </footer>
+
+    @pushOnce("scripts")
+        <script defer>
+            document.getElementById("copy-email").addEventListener("click", handleCopyEmail)
+
+            async function handleCopyEmail() {
+                const toastMagic = new ToastMagic();
+
+                try {
+                    toastMagic.hideAll();
+
+                    const result = await navigator.permissions.query({
+                        name: "clipboard-write"
+                    });
+
+                    if (result.state === "granted" || result.state === "prompt") {
+                        navigator.clipboard.writeText("harrison@bouche.dev");
+                        toastMagic.success("Copied to your clipboard!", "", true)
+                    } else {
+                        toastMagic.error("Unable to copy to clipboard.", "", true)
+                    }
+                } catch (error) {
+                    navigator.clipboard.writeText("harrison@bouche.dev");
+                    toastMagic.success("Copied to your clipboard!", "", true)
+                }
+
+            }
+        </script>
+    @endpushOnce
 </x-layout>

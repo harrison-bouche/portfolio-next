@@ -111,10 +111,13 @@
     text-decoration: none;
     text-transform: uppercase;
     color: var(--bouche-color-lamplight-500);
+    background-color: transparent;
     fill: var(--bouche-color-lamplight-500);
     white-space: nowrap;
 
     border-radius: 16px;
+
+    cursor: pointer;
 
     transition-property: color, fill, background-color, transform;
     transition-duration: 0.15s;

@@ -21,11 +21,11 @@
         src="https://challenges.cloudflare.com/turnstile/v0/api.js"
         async
         defer
-    ></script>
-
-    @stack('scripts')
+    ></script>    
 
     @vite(["resources/css/app.css"])
+
+    {!! ToastMagic::styles() !!}
 </head>
 
 <body>
@@ -73,6 +73,10 @@
     </svg>
 
     {{ $slot }}
+
+    @stack('scripts')
+
+    {!! ToastMagic::scripts() !!}
 </body>
 
 </html>

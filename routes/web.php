@@ -2,6 +2,7 @@
 
 use App\Data\ContactFormData;
 use App\Mail\ContactEstablished;
+use Devrabiul\ToastMagic\Facades\ToastMagic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
@@ -44,6 +45,8 @@ Route::post("/contact", function (Request $request, ContactFormData $data) {
             return abort(400, "Cloudflare Captcha validation failed. Please try again.");
         }
     }
+
+    ToastMagic::success('Message sent!');
 
     Mail::to("harrison@bouche.dev")->send(new ContactEstablished($data));
 

@@ -69,8 +69,16 @@ body {
         --jagged-border-color: var(--bouche-color-neutral-100);
     }
 
+    &.success-dark {
+        --jagged-border-color: rgb(0, 110, 0);
+    }
+
     &.error {
         --jagged-border-color: red /* var(--bouche-color-red-500) */;
+    }
+
+    &.error-dark {
+        --jagged-border-color: rgb(128, 2, 2) /* var(--bouche-color-red-500) */;
     }
 }
 
