@@ -1,0 +1,1 @@
+<button class='style1'>{{ $slot }}</button>

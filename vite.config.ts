@@ -4,16 +4,8 @@ import { defineConfig } from "vite"
 export default defineConfig({
     plugins: [
         laravel({
-            input: ["resources/css/app.css"],
-            refresh: ['resources/**'],
+            input: ["resources/css/site.css"],
+            refresh: true
         }),
-        // vue({
-        //     template: {
-        //         transformAssetUrls: {
-        //             base: null,
-        //             includeAbsolute: false,
-        //         },
-        //     },
-        // }),
     ],
 })

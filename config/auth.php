@@ -55,15 +55,19 @@ return [
     | providers to represent the model / table. These providers may then
     | be assigned to any extra authentication guards you have defined.
     |
-    | Supported: "database", "eloquent"
+    | Supported: "statamic", "database", "eloquent"
     |
     */
 
     'providers' => [
         'users' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'driver' => 'statamic',
         ],
+
+        // 'users' => [
+        //     'driver' => 'eloquent',
+        //     'model' => env('AUTH_MODEL', User::class),
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -95,6 +99,13 @@ return [
             'provider' => 'users',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'activations' => [
+            'provider' => 'users',
+            'table' => env('AUTH_ACTIVATION_TOKEN_TABLE', 'password_activation_tokens'),
+            'expire' => 4320,
             'throttle' => 60,
         ],
     ],

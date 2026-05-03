@@ -1,0 +1,8 @@
+name: Harrison
+super: true
+id: d4d9ec66-207e-4694-9290-ffeffb58a195
+password_hash: $2y$12$V0kytAE7SojT.ujc6buTIOmoX/Rp2oVi.Zqt0BHsqLaWI3QtRlOD6
+preferences:
+  collections:
+    pages:
+      view: tree

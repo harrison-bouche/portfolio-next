@@ -13,53 +13,68 @@
             <h2 class="contact-form__heading">Reach Out</h2>
         </div>
         <div class="contact-form__section-wrapper">
-            <form
-                method="POST"
-                action="{{ route("contact") }}"
-                class="contact-form__section--form"
-            >
-                @csrf
+            <s:form:reach_out class="contact-form__section--form">
+                @if (count($errors) > 0)
+                    <div class="contact-form__message-wrapper input--full-col">
+                        <p class="jagged-border contact-form__message error">
+                            @foreach ($errors as $error)
+                                {{ $error }}<br
+                                 />
+                            @endforeach
+                        </p>
+                    </div>
+                @endif
+
+                @if ($success)
+                    <div class="contact-form__message-wrapper input--full-col">
+                        <p class="jagged-border contact-form__message">
+                            <strong>Your message has been sent!</strong> I will get back to you
+                            soon. Thanks for reaching out.
+                        </p>
+                    </div>
+                @endif
+
                 <label class="input">
                     <span class="input__label">Name *</span>
                     <div
-                        class="jagged-border @error("name") error @enderror"
+                        class="jagged-border @isset($error['name']) error @endisset"
                         data-jagged="dark"
                     >
                         <input
                             name="name"
                             type="text"
                             required
-                            class="input__input "
+                            :value="old('name')"
+                            class="input__input"
                         />
                     </div>
                 </label>
                 <label class="input">
                     <span class="input__label">Email *</span>
                     <div
-                        class="input__input-wrapper jagged-border @error("email") error @enderror"
+                        class="input__input-wrapper jagged-border @isset($error['email']) error @endisset"
                         data-jagged="dark"
                     >
                         <input
                             name="email"
                             type="email"
                             required
+                            :value="old('email')"
                             class="input__input"
                         />
-                        @error("email")
-                            <span class="input__error">{{ $message }}</span>
-                        @enderror
                     </div>
                 </label>
                 <label class="input input--full-col">
                     <span class="input__label">Subject *</span>
                     <div
-                        class="jagged-border @error("subject") error @enderror"
+                        class="jagged-border @isset($error['subject']) error @endisset"
                         data-jagged="dark"
                     >
                         <input
                             name="subject"
                             type="text"
                             required
+                            :value="old('subject')"
                             class="input__input"
                         />
                     </div>
@@ -67,19 +82,21 @@
                 <label class="input input--full-col">
                     <span class="input__label">Message</span>
                     <div
-                        class="jagged-border @error("message") error @enderror"
+                        class="jagged-border @isset($error['message']) error @endisset"
                         data-jagged="dark"
                     >
                         <textarea
                             name="message"
                             class="input__input input__input-textarea"
-                        ></textarea>
+                            >{{ old("message") }}</textarea
+                        >
                     </div>
                 </label>
                 <label class="contact-form__turnstile-wrapper">
                     <span class="input__label">Are You Human?</span>
                     <div
-                        class="cf-turnstile contact-form__turnstile jagged-turnstile" data-jagged="dark"
+                        class="cf-turnstile contact-form__turnstile jagged-turnstile"
+                        data-jagged="dark"
                         data-sitekey="{{ config("services.cloudflare.turnstile.sitekey") }}"
                         data-theme="dark"
                         data-size="flexible"
@@ -95,19 +112,19 @@
                 >
                     <span>Complete Captcha</span>
                 </button>
-            </form>
+            </s:form:reach_out>
         </div>
     </div>
 </div>
 
-@pushOnce('scripts')
-<script defer>
-    function onSuccess() {
-        const button = document.getElementById("contact-form-submit");
+@pushOnce ("scripts")
+    <script defer>
+        function onSuccess() {
+            const button = document.getElementById("contact-form-submit")
 
-        button.classList.remove('button--disabled')
-        button.disabled = false;
-        button.textContent = "Send";
-    }
-</script>
+            button.classList.remove("button--disabled")
+            button.disabled = false
+            button.textContent = "Send"
+        }
+    </script>
 @endpushOnce

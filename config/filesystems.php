@@ -41,7 +41,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,
@@ -56,6 +56,16 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+            'throw' => false,
+            'report' => false,
+            // 'visibility' => 'public', // https://statamic.dev/assets#container-visibility
+        ],
+
+        'assets' => [
+            'driver' => 'local',
+            'root' => public_path('assets'),
+            'url' => '/assets',
+            'visibility' => 'public',
             'throw' => false,
             'report' => false,
         ],
