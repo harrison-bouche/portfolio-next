@@ -21,7 +21,14 @@
         src="https://challenges.cloudflare.com/turnstile/v0/api.js"
         async
         defer
-    ></script>    
+    ></script>
+    
+    <script async src="https://plausible.io/js/pa-rKRgzO9ayNalafJvsd0xl.js"></script>
+    <script>
+        window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+        plausible.init()
+    </script>
+    
 
     @vite(["resources/css/app.css"])
 
